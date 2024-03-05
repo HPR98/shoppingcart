@@ -13,13 +13,18 @@ function App() {
     const newItem = event.target.innerText;
     setItems([...items, newItem])
   }
+  const handleAddition = (event) => {
+    event.preventDefault();
+    const newItem = document.getElementById("addition").value;
+    setItems([...items, newItem])
+  }
 
   const buttons = [];
   const buttonCreator = () => {
     for(const categorie in itemlist){
-      buttons.push(<h2>{categorie}</h2>)
+      buttons.push(<h2 className={styles.h3}>{categorie}</h2>)
       for(let i = 0; i < itemlist[categorie].length; i++){
-        buttons.push(<button onClick={handleClick}>{itemlist[categorie][i]}</button>)
+        buttons.push(<button onClick={handleClick} className={styles.h3}>{itemlist[categorie][i]}</button>)
       }
     }
     return buttons;
@@ -55,12 +60,12 @@ function App() {
 
     const element = document.createElement("a")
     element.href = URL.createObjectURL(file)
-    element.download = "Testdownload.scpt"
+    element.download = "shoppingcart.scpt"
 
     document.body.appendChild(element)
     element.click();
-
   }
+
 
   return (
     <>
@@ -71,6 +76,11 @@ function App() {
       {buttonCreator()}
       <br></br>
       <button className={styles.downloadButton} onClick={downloadList}>Download shoppinglist</button>
+      <form>
+        <h3 className={styles.h3}>Add new Item</h3>
+        <input type="text" placeholder="Type to add item to list" id="addition"></input>
+        <button type="submit" onClick={handleAddition}>Add</button>
+      </form>
     </>
   );
 }
