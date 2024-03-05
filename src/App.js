@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./Header"
+import React, { useState } from "react"
+import itemlist from "./itemlist"
+
 
 function App() {
+  const [items, setItems] = React.useState([])
+
+  const handleClick = (event) => {
+    const newItem = event.target.innerText;
+    setItems([...items, newItem])
+  }
+
+  const buttons = [];
+  const buttonCreator = () => {
+    for(const categorie in itemlist){
+      buttons.push(<h2>{categorie}</h2>)
+      for(let i = 0; i < itemlist[categorie].length; i++){
+        buttons.push(<button onClick={handleClick}>{itemlist[categorie][i]}</button>)
+      }
+    }
+    return buttons;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header></Header>
+      <ul>
+        {items.map((item, index) => (<li key={index}>{item}</li>))}
+      </ul>
+      {buttonCreator()}
+    </>
   );
 }
 

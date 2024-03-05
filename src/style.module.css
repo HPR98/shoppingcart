@@ -1,0 +1,29 @@
+.h1{
+    font-family: Helvetica, Arial, sans-serif;
+    text-align: center;
+}
+.loginCard{
+    font-family: Helvetica, Arial, sans-serif;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 2px gray solid;
+    padding: 50px;
+    border-radius: 15%;
+    background-color: rgba(128, 128, 128, 0.562);
+    width: fit-content;
+}
+.username{
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+.password{
+    margin-bottom: 15px;
+}
+.loginButton{
+    width: 100px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+}
